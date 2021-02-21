@@ -41,12 +41,12 @@ Schema:
 ```xml
 <HueUserLights>
   <Lights>
-		<Light>
-			<Name>Hue Iris 1</Name>		
-		</Light>
-		<Light>
-			<Name>Hue color downlight</Name>		
-		</Light>		
+    <Light>
+      <Name>Hue Iris 1</Name>		
+    </Light>
+    <Light>
+      <Name>Hue color downlight</Name>		
+    </Light>		
   </Lights>
 </HueUserLights>
 ```
