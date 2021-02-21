@@ -29,7 +29,7 @@ Hue Bridge 2nd Generation
 ***CONFIGURATION***:<p>
 Uses light name configured in Hue setup to find and alert lights.
 <p>
-To add additional lights, add under <Lights> </Lights>:
+To add additional lights, add under Lights:
 	
 ```xml
 <Light>
