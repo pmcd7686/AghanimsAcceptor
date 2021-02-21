@@ -10,8 +10,8 @@ Hue Bridge 2nd Generation
 <p>
 	
 ***GENERAL USAGE***:<p>
-1. Start button will kick-off an exe (DotaGameAcceptor.exe) that will wait for Dota2.exe to become focused window.
-2. This script exe will exit when user input is detected or when a game is found.
+1. Start button will kick-off an exe (DotaGameAcceptor.exe) that will wait for Dota2.exe to become focused window (no additional user interaction is required).
+2. This script exe will exit if user input is detected (mouse movement) or when a game is found.
 3. When a game is found, Dota2.exe will become focused window due to setting change from above.
 4. Script exe will then wait a few seconds and press Enter to accept the game.
 <p>
