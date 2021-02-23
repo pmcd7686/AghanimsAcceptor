@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<HueUserLights xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Lights>
+		<Light>
+			<Name>Hue Iris 1</Name>		
+		</Light>
+		<Light>
+			<Name>Hue white tree light</Name>		
+		</Light>	
+  </Lights>
+</HueUserLights>

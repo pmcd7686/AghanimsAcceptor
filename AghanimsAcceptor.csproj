@@ -198,11 +198,20 @@
     <EmbeddedResource Include="Resources\Success.gif" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\HueUserLights.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Logs\log.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\IdleImage.gif" />
     <EmbeddedResource Include="Resources\lightbulb_disconnected.jpg" />
     <EmbeddedResource Include="Resources\lightbulb_success.gif" />
     <EmbeddedResource Include="Resources\lightbulb_failed.jpg" />
     <Content Include="Resources\lightbulb_waiting.jpg" />
+    <Content Include="Script\DotaGameAcceptor.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="undying_icon_by_imkb_d6l50g6_t7T_icon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +221,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
