@@ -209,7 +209,13 @@ namespace DotaGameAcceptor {
 
             string hueIp = String.Empty;
 
-            hueIp = await GetHueBridgeIpAddress();
+            try {
+                hueIp = await GetHueBridgeIpAddress();
+            }
+            catch {
+                WriteLog("Failed to get Hue Bridge Ip Address.");
+                return false;
+            }
             List<BridgeIpAddressResponse> bridgeIpAddressResponse = JsonConvert.DeserializeObject<List<BridgeIpAddressResponse>>(hueIp);
             HueBridgeDetails.ip = bridgeIpAddressResponse.First().internalipaddress;
             HueBridgeDetails.id = bridgeIpAddressResponse.First().id;
@@ -226,8 +232,10 @@ namespace DotaGameAcceptor {
             if (_hueAuthUser == null) {
                 string hueAuth = String.Empty;
                 hueAuth = await GetHueAuthentication();
-
-                if (hueAuth.ToUpper().Contains("ERROR")) {
+                if (hueAuth == String.Empty || hueAuth == null) {
+                    connected = false;
+                }
+                else if (hueAuth.ToUpper().Contains("ERROR")) {
                     List<HueAuthError> hueAuthErrors = JsonConvert.DeserializeObject<List<HueAuthError>>(hueAuth);
                     showBalloon(title: "Hue Authentication Error", body: hueAuthErrors.First().error.description + ". Press Link Button on Hue Bridge and try again.");
                     WriteLog(hueAuthErrors.First().error.description + ". Press Link Button on Hue Bridge and try again.");
@@ -280,9 +288,16 @@ namespace DotaGameAcceptor {
                 HueAuthRequest authRequest = new HueAuthRequest() { devicetype = DEVICENAME };
                 var stringPayload = await Task.Run(() => JsonConvert.SerializeObject(authRequest));
                 var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
-                HttpResponseMessage authResponse = await httpClient.PostAsync(authUri, httpContent);
-                authResponse.EnsureSuccessStatusCode();
-                s = await authResponse.Content.ReadAsStringAsync();                
+
+                try {
+                    HttpResponseMessage authResponse = await httpClient.PostAsync(authUri, httpContent);
+                    authResponse.EnsureSuccessStatusCode();
+                    s = await authResponse.Content.ReadAsStringAsync();
+                }
+                catch (Exception e) {
+                    WriteLog("Hue Authentication Request Error:" + e.Message);
+                }
+                            
             }
             return s;
         }
